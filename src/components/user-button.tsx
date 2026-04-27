@@ -21,6 +21,7 @@ import { authClient } from "@/lib/auth-client";
 export function UserButton() {
   const { data } = authClient.useSession();
 
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -50,7 +51,9 @@ export function UserButton() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={() => {
+          authClient.signOut()
+        }}>
           <LogOutIcon />
           Sign Out
         </DropdownMenuItem>
