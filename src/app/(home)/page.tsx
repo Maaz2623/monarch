@@ -3,9 +3,14 @@ import { ProductCardOne } from "@/components/commercn/product-cards/product-card
 import Navbar from "@/components/navbar";
 import { db } from "@/db";
 import { products } from "@/db/schema";
+import { requireAuth } from "@/lib/auth-utils";
 import { getQueryClient, HydrateClient, prefetch, trpc } from "@/trpc/server";
 
 const HomePage = async () => {
+
+  await requireAuth()
+
+
   const data = await db.select().from(products);
 
   prefetch(trpc.cart.getItems.queryOptions());
