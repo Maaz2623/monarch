@@ -139,10 +139,7 @@ export function CheckoutOne() {
                         <SelectValue placeholder="Select state" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="ca">California</SelectItem>
-                        <SelectItem value="ny">New York</SelectItem>
-                        <SelectItem value="tx">Texas</SelectItem>
-                        <SelectItem value="fl">Florida</SelectItem>
+                        <SelectItem value="ka">Karnataka</SelectItem>
                       </SelectContent>
                     </Select>
                   </Field>
@@ -219,7 +216,7 @@ export function CheckoutOne() {
             <li key={item.id} className="flex justify-between">
               <h5 className="text-sm">{item.product.title}</h5>
               <p className="font-medium">
-                {item.quantity} x ${item.product.price}
+                {item.quantity} x ₹{item.product.price}
               </p>
             </li>
           ))}
@@ -228,24 +225,24 @@ export function CheckoutOne() {
 
           <li className="flex justify-between">
             <h5 className="text-sm">Subtotal</h5>
-            <p className="font-medium">${summary?.subtotal}</p>
+            <p className="font-medium">₹{summary?.subtotal}</p>
           </li>
           <li className="flex justify-between">
             <h5 className="text-sm">Shipping</h5>
             <p className="font-medium">
-              ${shippingMethod === "home" ? "10" : 0}
+              ₹{shippingMethod === "home" ? "10" : 0}
             </p>
           </li>
           <li className="flex justify-between">
             <h5 className="text-sm">Tax</h5>
-            <p className="font-medium">${summary?.tax}</p>
+            <p className="font-medium">₹{summary?.tax}</p>
           </li>
 
           <hr className="my-4" />
           <li className="flex justify-between">
             <h5 className="text-lg font-medium">Total</h5>
             <p className="text-xl font-medium">
-              $
+              ₹
               {(summary
                 ? summary.total
                 : 1 + (shippingMethod === "home" ? 10 : 0)

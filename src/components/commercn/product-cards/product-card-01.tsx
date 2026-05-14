@@ -77,7 +77,7 @@ export function ProductCardOne({
           </div>
 
           <div className="flex items-center justify-between">
-            <p className="text-2xl font-bold">${price.toFixed(2)}</p>
+            <p className="text-2xl font-bold">₹{price.toFixed(2)}</p>
 
             <Button onClick={handleAddItemToCart}>Add to Cart</Button>
           </div>

@@ -4,47 +4,27 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
+import Link from "next/link";
 
 const categories = [
 	{
 		id: 1,
 		title: "Electronics",
-		count: "1.2k+ Products",
+		count: "3+ Products",
 		image:
 			"https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=1801&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 	},
 	{
 		id: 2,
 		title: "Fashion",
-		count: "3.5k+ Products",
+		count: "2+ Products",
 		image:
 			"https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 	},
 	{
-		id: 3,
-		title: "Home & Decor",
-		count: "800+ Products",
-		image:
-			"https://images.unsplash.com/photo-1534349762230-e0cadf78f5da?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-	},
-	{
-		id: 4,
-		title: "Beauty",
-		count: "2.1k+ Products",
-		image:
-			"https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-	},
-	{
-		id: 5,
-		title: "Sports",
-		count: "1.5k+ Products",
-		image:
-			"https://images.unsplash.com/photo-1768647417374-5a31c61dc5d0?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-	},
-	{
 		id: 6,
 		title: "Watches",
-		count: "400+ Products",
+		count: "2+ Products",
 		image:
 			"https://images.unsplash.com/photo-1639006570490-79c0c53f1080?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 	},
@@ -65,10 +45,10 @@ export function CategoryOne() {
 				</div>
 
 				<Button className="group" asChild>
-					<a href="#">
+					<Link href="/products">
 						View all categories
 						<ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-					</a>
+					</Link>
 				</Button>
 			</div>
 

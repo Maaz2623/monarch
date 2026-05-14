@@ -71,7 +71,7 @@ export const CartSheet = ({ children }: CartSheetProps) => {
           <div className="flex justify-between items-center">
             <p className="text-lg font-semibold">Total</p>
             <p className="text-lg font-semibold">
-              {summary ? `$${summary.subtotal}` : "Loading..."}
+              {summary ? `₹${summary.subtotal}` : "Loading..."}
             </p>
           </div>
           <Button className="w-full" onClick={() => router.push(`/checkout`)}>

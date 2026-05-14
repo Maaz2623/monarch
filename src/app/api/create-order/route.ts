@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
   const { amount }: { amount: number } = await req.json();
 
   const order = await razorpay.orders.create({
-    amount: amount,
+    amount:  Math.round(amount * 100),
     currency: "INR",
   });
 

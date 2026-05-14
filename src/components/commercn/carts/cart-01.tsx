@@ -146,7 +146,7 @@ export function ShoppingCartOne(cartItem: CartItemProps) {
             </div>
 
             <p className="text-xl font-semibold">
-              ${(cartItem.price * quantity).toFixed(2)}
+              ₹{(cartItem.price * quantity).toFixed(2)}
             </p>
           </div>
         </div>

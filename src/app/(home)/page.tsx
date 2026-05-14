@@ -15,10 +15,10 @@ const HomePage = async () => {
 
   return (
     <HydrateClient>
-      <Navbar />
-      <div className="p-10 flex flex-col gap-y-20">
+    
+  
         <CategoryOne />
-        <div className="flex flex-wrap justify-center items-start space-x-[5%] space-y-[5%]">
+        <div className="flex w-full flex-wrap justify-center items-start space-x-[5%] space-y-[5%]">
           {data.map((product) => (
             <ProductCardOne
               id={product.id}
@@ -30,7 +30,7 @@ const HomePage = async () => {
             />
           ))}
         </div>
-      </div>
+     
     </HydrateClient>
   );
 };
