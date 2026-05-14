@@ -20,7 +20,7 @@ const Navbar = () => {
           <Logo />
 
           {/* Desktop Menu */}
-          <NavMenu className="hidden md:block" />
+          {/* <NavMenu className="hidden md:block" /> */}
         </div>
 
         <div className="flex items-center gap-x-4">

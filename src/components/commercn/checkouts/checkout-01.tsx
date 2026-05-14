@@ -21,6 +21,13 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { useTRPC } from "@/trpc/client";
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
+import Script from "next/script";
+
+declare global {
+  interface Window {
+    Razorpay: any;
+  }
+}
 
 export function CheckoutOne() {
   const trpc = useTRPC();
@@ -32,6 +39,64 @@ export function CheckoutOne() {
   const [shippingMethod, setShippingMethod] = useState<"home" | "pickup">(
     "home",
   );
+
+  const handlePayment = async () => {
+    try {
+      const res = await fetch("/api/create-order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          amount: summary?.total,
+        }),
+      });
+
+      const order: {
+        id: string;
+        amount: number;
+      } = await res.json();
+
+      const options = {
+        key: process.env.NEXT_PUBLIC_RAZORPAY_TEST_API_KEY,
+
+        amount: Math.round((summary?.total ?? 0) * 100),
+        currency: "INR",
+        name: "Acme Corp",
+        description: "Test Transaction",
+
+        image: "https://example.com/your_logo",
+
+        order_id: order.id,
+
+        handler: function (response: any) {
+          alert(response.razorpay_payment_id);
+          alert(response.razorpay_order_id);
+          alert(response.razorpay_signature);
+        },
+
+        prefill: {
+          name: "",
+          email: "",
+          contact: "",
+        },
+
+        theme: {
+          color: "#000000",
+        },
+      };
+
+      const rzp = new window.Razorpay(options);
+
+      rzp.on("payment.failed", function (response: any) {
+        console.log(response.error);
+      });
+
+      rzp.open();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="w-full max-w-6xl flex flex-col md:flex-row justify-between items-start gap-8">
@@ -181,14 +246,18 @@ export function CheckoutOne() {
             <h5 className="text-lg font-medium">Total</h5>
             <p className="text-xl font-medium">
               $
-              {(summary ? summary.total : 1 + (shippingMethod === "home" ? 10 : 0)).toFixed(
-                2,
-              )}
+              {(summary
+                ? summary.total
+                : 1 + (shippingMethod === "home" ? 10 : 0)
+              ).toFixed(2)}
             </p>
           </li>
         </ul>
         <Field orientation="horizontal" className="mt-4">
-          <Button className="w-full h-12 bg-black text-white hover:bg-gray-800">
+          <Button
+            onClick={handlePayment}
+            className="w-full h-12 bg-black text-white hover:bg-gray-800"
+          >
             Continue to Payment
           </Button>
         </Field>

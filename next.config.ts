@@ -6,7 +6,8 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "www.boat-lifestyle.com",
+        protocol: "https",
+        hostname: "**",
       },
     ],
   },

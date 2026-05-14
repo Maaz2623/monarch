@@ -7,9 +7,7 @@ import { requireAuth } from "@/lib/auth-utils";
 import { getQueryClient, HydrateClient, prefetch, trpc } from "@/trpc/server";
 
 const HomePage = async () => {
-
-  await requireAuth()
-
+  await requireAuth();
 
   const data = await db.select().from(products);
 
